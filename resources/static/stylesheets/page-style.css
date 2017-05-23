@@ -1,0 +1,123 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+div.heading-jumbo{
+    background-color: #2e2f30;
+    color: #dedfe0;
+    text-align : center;
+    vertical-align: middle;
+    display: inline-block;
+    justify-content: center;
+    width: 100vw;
+    height : 260px;
+}
+h1{
+    padding: 0px;
+    line-height: 60px;
+    font-size: 96px;
+}
+p{
+    font-size: 20px;
+    font-style: italic;
+}
+div.navigation{
+    height: 60px;
+    background-color: #272828;
+    text-align: center;
+    display: inline-block;
+    width: 100vw;
+    vertical-align: middle;
+    color: #dedfe0;
+    display: inline-block;
+    font-size: 30px;
+}
+div.navigation-button{
+    display: inline-block;
+    line-height:60px;
+    width: 200px;
+}
+div.navigation-button:hover{
+    background-color: #161616;
+}
+a:link{
+    color: #dedfe0;
+    text-decoration: none;
+}
+a:hover{
+    color: #ffffff
+}
+a:visited{
+    color: #dedfe0;
+    text-decoration: none;
+}
+div.new-posts-bounding{
+    background-color: #ffffff;
+    height: 50vh;
+    width: 100vw;
+    text-align: center;
+}
+div.new-post-box{
+    text-align: center;
+    background-color: #dedfe0;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+    height: 45vh;
+    width: 30vw;
+    padding: 5px;
+    text-align: center;
+    border-radius: 9px;
+}
+div.new-post-box-header{
+    margin: 6px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 35px;
+    font-weight: bolder;
+     white-space: normal;
+}
+div.new-post-box-metadata{
+    text-align: left;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-left: 9px;
+    font-style: italic;
+}
+div.new-post-box-description{
+    margin-left: 8px;
+    text-align: left;
+    font-size: 18px;
+}
+div.entry-title{
+    font-size: 68px;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+div.entry-metadata{
+    font-size: 25px;
+    margin-left: 34px;
+    margin-bottom: 30px;
+}
+div.entry-content{
+    margin-left:36px;
+    margin-right: 90px;
+    font-size: 15px;
+}
+div.bottom-footer{
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 25px;
+    text-align: center;
+    font-size: 10px;
+    visibility: visible;
+}
+div.error-message{
+    text-align: center;
+    font-weight: bolder;
+}
