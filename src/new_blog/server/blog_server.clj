@@ -30,4 +30,4 @@
 (defn start-blog
     "Starts server from destroot, takes init parameter block [init_config]"
     [init-config]
-    (org.httpkit.server/run-server primary-routes {:port (System/getenv "PORT")}))
+    (org.httpkit.server/run-server primary-routes {:port (read-string (System/getenv "PORT"))}))
