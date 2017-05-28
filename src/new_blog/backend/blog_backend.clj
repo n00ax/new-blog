@@ -1,23 +1,38 @@
 (ns new-blog.backend.blog-backend
     (:gen-class)
-    (:require [monger.core :as monger]
-              [monger.collection]))
+    (:require [monger.core :as mongo]
+              [monger.collection :as mongo-collection]
+              [monger.query :as mongo-query]
+              [monger.operators :as mo]))
 
 (defn grab-entry
     [id]
-    "returns page map basec on id"
-    (let [connection (monger/connect)
-                 database (monger/get-db connection "blog-test")
-                 coll "entries"]
-         (first (monger.collection/find-maps database coll {:name id}))))
-   
-(defn grab-entry-d
+    "returns raw database entry as map via corrosponding id field"
+    (let [connection (mongo/connect)
+          database (mongo/get-db connection "clojure-blog")]
+        (mongo-collection/find-one-as-map database "entries" {:entry-title id})))
+
+(defn grab-newest-entries
+    [limit]
+    "returns raw entries in ascending order created to limit as vector"
+    (let [connection (mongo/connect)
+          database (mongo/get-db connection "clojure-blog")]
+        (mongo-query/with-collection database "entries"
+            (mongo-query/sort (array-map :_id -1))
+            (mongo-query/limit limit))))
+
+(defn grab-comments
     [id]
-    "returns page map basec on id"
-    (let [connection (monger/connect)
-                 database (monger/get-db connection "blog-test")
-                 coll "entries"]
-         (first (monger.collection/find-maps database coll {:_id id}))))
+    (:entry-comments (grab-entry id)))
    
-
-
+(defn write-comment
+    [id date name comment]
+    (println id date name comment)
+    (let [connection (mongo/connect)
+            database (mongo/get-db connection "clojure-blog")]
+        (mongo-collection/update database "entries" {:entry-title id} {mo/$push {:entry-comments{
+                                                                                                :comment-name name
+                                                                                                :comment-date date
+                                                                                                :comment-content comment}}} {:multi false})))
+        
+    

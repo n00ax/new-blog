@@ -13,7 +13,7 @@
         </div>
         <div class="navigation">
             <div class="navigation-button">
-                <a href="/home">Home</a>
+                <a href="/">Home</a>
             </div>
             <div class="navigation-button">
                 <a href="/blog">Blog</a>
@@ -30,6 +30,29 @@
         </div>
         <div class="entry-content">
             {{entry-content}}
+        </div>
+        <div class="comments-bounding">
+            Comments<br>
+            <form class="comment-form" action="/entries/{{entry-title}}/comment" method="GET">
+                <textarea class="comment-form-text" name="person-comment"></textarea><br>
+                <span class="comment-entry-header"> Name: </span> 
+                <input type="text" class="comment-form-name" name="person-name">
+                <br><button type="submit" class="comment-submit">Submit</button>
+            </form>
+        </div>
+        <div class="comments">
+            {% for comment in entry-comments %}
+                <div class="comment">
+                    <div class="comment-upper-metadata">
+                        <div>Poster: {{comment.comment-name}}</div>
+                        <div>{{comment.comment-date}}</div>
+                    </div>
+                    <div class="comment-lower-content">
+                        <div>{{comment.comment-content}}</div>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
         </div>
     </body>
     <div class="bottom-footer">

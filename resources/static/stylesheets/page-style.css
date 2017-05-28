@@ -69,6 +69,11 @@ div.new-post-box{
     padding: 5px;
     text-align: center;
     border-radius: 9px;
+    word-wrap: break-word
+}
+div.new-post-box:hover{
+    background-color: #b8b9ba;
+    cursor: pointer;
 }
 div.new-post-box-header{
     margin: 6px;
@@ -120,4 +125,56 @@ div.bottom-footer{
 div.error-message{
     text-align: center;
     font-weight: bolder;
+}
+div.metadata-encoder{
+    display: none;
+}
+div.metadata-block{
+    display: none;
+}
+div.comments-bounding{
+    font-size: 30px;
+    display: block;
+    margin-top :60px;
+    margin-left: 34px;
+    margin-bottom: 30px;
+}
+textarea.comment-form-text{
+    width: 400px;
+    height: 100px;
+}
+input.comment-form-name{
+    width:330px;
+}
+span.comment-entry-header{
+    font-size: 20px;
+}
+button.comment-submit{
+    width: 410px;
+    height: 30px;
+    background-color: #272828;
+    color : #dedfe0;
+    padding: 0px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px
+}
+div.comments{
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-left:30px;
+    width: 500px;
+}
+div.comment-upper-metadata{
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    padding: 5px;
+    color: #dedfe0;
+    background-color: #272828
+}
+div.comment-lower-content{
+    padding: 5px;
+    background-color: #e2e2e2;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
 }
