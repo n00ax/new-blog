@@ -11,7 +11,7 @@
 (defn mongo-connect-shim
     []
     (if (= (System/getenv "IS_PRODUCTION") "true")
-            (:db (mongo/connect-via-uri connect-uri))
+            (:conn (mongo/connect-via-uri connect-uri))
             (mongo/connect)))
 
 (defn mongo-db-shim
