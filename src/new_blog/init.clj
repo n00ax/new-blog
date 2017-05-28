@@ -5,7 +5,7 @@
 (defn -main
   "Init Entry Point"
   [& args]
-  (println "NEW")
+  (println (System/getenv "IS_HEROKU"))
   (if (= (System/getenv "IS_HEROKU") "true")
     (new-blog.server.blog-server/start-blog (do (println "HEROKU")(new-blog.config.init-config/server-configs :production)))
     (if args
