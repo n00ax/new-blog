@@ -43,12 +43,23 @@
                     :entry-content (:entry-content page-data)
                     :entry-comments comment-data}))))
 
-(defn middle [post-name post-comment entryid]
-    (backend/write-comment entryid "June 1st" post-name post-comment)
-    (ring.response/redirect "post"))
+(defn render-search
+    [path]
+    (renderer/render (slurp (get-page-path path)) 
+        {:results-per-page-constant (vec (repeat 8 nil))}))
+
+(defn render-info
+    [path]
+    (renderer/render (slurp (get-page-path path))
+        {}))
 
 (compojure.core/defroutes primary-routes
     (compojure.core/GET "/" [] (render-index "index.html"))
+    (compojure.core/GET "/blog" [] (render-search "search.html"))
+    (compojure.core/GET "/lookup" [lookup-id] 
+        (backend/convert-keys-to-csv :entry-title (backend/search-comment lookup-id)))
+    (compojure.core/GET "/lookup-assoc-date" [lookup-id] 
+        (backend/convert-keys-to-csv :entry-date (backend/search-comment lookup-id)))
     (compojure.core/context "/entries/:entryid" [entryid] 
         (compojure.core/GET "/post" [] (render-post "post.html" entryid))
         (compojure.core/GET "/comment" request
@@ -56,6 +67,7 @@
                     post-comment (:person-comment (:params request))]
                 (backend/write-comment entryid "June 1st" post-name post-comment)
                 (ring.response/redirect "post"))))
+    (compojure.core/GET "/info" [] (render-info "info.html"))
     (compojure.route/resources "/" {:root "static"})
     (compojure.route/not-found (renderer/render (slurp (get-page-path "404.html")) {})))
 

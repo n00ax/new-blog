@@ -11,7 +11,8 @@
                  [com.ashafa/clutch "0.4.0"]
                  [org.slf4j/slf4j-nop "1.7.12"]
                  [ring/ring-defaults "0.3.0"]
-                 [ring/ring-core "1.6.1"]]
+                 [ring/ring-core "1.6.1"]
+                 [org.clojure/data.json "0.2.6"]]
   :main ^:skip-aot new-blog.init
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})

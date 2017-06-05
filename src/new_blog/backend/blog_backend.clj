@@ -5,19 +5,23 @@
               [monger.query :as mongo-query]
               [monger.operators :as mo]))
 
-(def connect-uri "mongodb://server-node:12345@ds155411.mlab.com:55411/heroku_vsdsxqp7")
-(def connect-database "heroku_vsdsxqp7")
+(defn connect-uri 
+    []
+    (System/getenv "MONGODB_URI"))
+(defn connect-database
+    [] 
+    (System/getenv "MONGODB_DATABASE"))
 
 (defn mongo-connect-shim
     []
     (if (= (System/getenv "IS_PRODUCTION") "true")
-            (:conn (mongo/connect-via-uri connect-uri))
-            (mongo/connect)))
+        (:conn (mongo/connect-via-uri (connect-uri)))
+        (mongo/connect)))
 
 (defn mongo-db-shim
     []
     (if (= (System/getenv "IS_PRODUCTION") "true")
-        connect-database
+        (connect-database)
         "clojure-blog"))
 
 (defn grab-entry
@@ -38,10 +42,12 @@
 
 (defn grab-comments
     [id]
+    "returns comments based on entry id (aka title) and returns as vector of maps"
     (:entry-comments (grab-entry id)))
    
 (defn write-comment
     [id date name comment]
+    "writes comment to article [id] with date (string) name (string) and comment (string)"
     (println id date name comment)
     (let [connection (mongo-connect-shim)
             database (mongo/get-db connection (mongo-db-shim))]
@@ -50,4 +56,12 @@
                                                                                                  :comment-date date
                                                                                                  :comment-content comment}}} {:multi false})))
         
-    
+(defn search-comment
+    [keyword]
+    (let [connection (mongo-connect-shim)
+            database (mongo/get-db connection (mongo-db-shim))]    
+        (mongo-collection/find-maps database "entries" {:entry-title {mo/$regex (str keyword) mo/$options "i"}})))
+
+(defn convert-keys-to-csv
+    [key entries]
+    (reduce #(str %1 "," %2) (map key entries)))

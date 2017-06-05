@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>N00aX's Scribe</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/page-style.css">
+    </head>
+    <body>
+        <div class="heading-jumbo">
+            <h1>N00aX's Scribe</h1>
+            <p> [Noah Whiteis's Blog] </p>
+        </div>
+        <div class="navigation">
+            <div class="navigation-button">
+                <a href="/">Home</a>
+            </div>
+            <div class="navigation-button">
+                <a href="/blog">Blog</a>
+            </div>
+            <div class="navigation-button">
+                <a href="/info">Info</a>
+            </div>
+        </div>
+        <div class="search-bounding">
+            <input type="text" class="search-header" id="searchInput" placeholder="Enter Search Expression"></input>
+            <div class="search-results-bounding">
+                {% for x in results-per-page-constant %}
+                <div class="search-result">
+                    <div class="search-result-text">
+                    </div>
+                    <div class="search-result-date">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="bottom-footer">
+            Copyright Noah Whiteis 2016, All Original Content Is Licensed Creative Commons Attribution-ShareAlike 4.0 International 
+        </div>
+        <script src="/scripts/jquery/jquery-3.2.1.min.js"></script>
+        <script src="/scripts/search.js"></script>
+    </body>
+</html>

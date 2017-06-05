@@ -11,11 +11,11 @@ div.heading-jumbo{
     display: inline-block;
     justify-content: center;
     width: 100vw;
-    height : 260px;
+    height : 315px; 
 }
 h1{
     padding: 0px;
-    line-height: 60px;
+    line-height: 120px;
     font-size: 96px;
 }
 p{
@@ -32,6 +32,8 @@ div.navigation{
     color: #dedfe0;
     display: inline-block;
     font-size: 30px;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
 }
 div.navigation-button{
     display: inline-block;
@@ -145,6 +147,9 @@ textarea.comment-form-text{
 }
 input.comment-form-name{
     width:330px;
+    height: 20px;
+    font-size: 20px;
+    text-align: left;
 }
 span.comment-entry-header{
     font-size: 20px;
@@ -177,4 +182,51 @@ div.comment-lower-content{
     background-color: #e2e2e2;
     border-bottom-left-radius: 9px;
     border-bottom-right-radius: 9px;
+}
+input{
+    font-family: 'Montserrat', sans-serif;
+    height: 45px;
+    width: 100vw;
+    height: 40px;
+    font-size: 40px;
+    text-align: center;
+}
+div.search-result{
+    background-color: #f2f2f2;
+    width: 100vw;
+    height: 60px;
+    display: inline-block;
+}
+div.search-result:hover{
+    background-color: #b8babc;
+    cursor: pointer;
+}
+div.search-result-text{
+    font-weight: bolder;
+    font-size: 30px;
+    padding-top: 15px;
+    float: left;
+    text-align: left;
+    text-indent: 40px;
+    width: 50vw;
+    height: 60px;
+}
+div.search-result-date{
+    font-weight: lighter;
+    font-size: 20px;
+    padding-top: 18px;
+    width: 50vw;
+    height: 60px;
+    text-indent: 40px;
+    direction: rtl;
+    float: right;
+    text-align: right;
+}
+img.info-portrait{
+    width: 200px;
+    border-radius: 9px;
+}
+div.entry-content a{
+    color: black;
+    text-decoration: underline;
 }
